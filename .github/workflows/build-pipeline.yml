@@ -35,7 +35,7 @@ jobs:
     - name: Run code quality reports
       run: |
         mkdir -p .reports
-        flake8 -q --format=html --htmldir=.reports/flake8 --exit-zero
+        flake8 --format=html --htmldir=.reports/flake8 --exit-zero
         flake8
     - name: Archive code quality html report
       uses: actions/upload-artifact@v2

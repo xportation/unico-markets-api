@@ -15,5 +15,5 @@ coverage:
 
 quality:
 	mkdir -p .reports
-	flake8 -q --format=html --htmldir=.reports/flake8 --exit-zero
+	flake8 --format=html --htmldir=.reports/flake8 --exit-zero
 	flake8
