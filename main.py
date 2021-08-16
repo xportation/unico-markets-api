@@ -1,8 +1,9 @@
-from fastapi import FastAPI
+import uvicorn
 
-app = FastAPI()
+from markets import application
+
+app = application.create_app()
 
 
-@app.get('/')
-async def read_index():
-    return {'Hello': 'World'}
+if __name__ == '__main__':
+    uvicorn.run(app)
