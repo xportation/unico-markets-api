@@ -1,7 +1,6 @@
 import typer
 
-import parser
-import storage
+from markets import storage, parser
 
 app = typer.Typer()
 

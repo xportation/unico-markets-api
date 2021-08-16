@@ -1,6 +1,6 @@
 import csv
 
-import model
+from markets import model
 
 
 def load_and_save_market(data, storage):

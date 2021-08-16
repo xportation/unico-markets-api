@@ -3,7 +3,7 @@ import os
 import pytest
 from starlette.testclient import TestClient
 
-import application
+from markets import application
 
 
 class StorageSpy:

@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-import view
+from markets import view
 
 
 def create_app():

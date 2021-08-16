@@ -1,6 +1,6 @@
 import uvicorn
 
-import application
+from markets import application
 
 app = application.create_app()
 

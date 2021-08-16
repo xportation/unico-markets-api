@@ -1,4 +1,4 @@
-import parser
+from markets import parser
 
 
 def test_import_csv(sample_filename, storage_spy):
