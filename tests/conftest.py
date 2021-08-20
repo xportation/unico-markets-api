@@ -2,6 +2,8 @@ import os
 
 import pytest
 
+from markets import database, config, model
+
 
 class StorageSpy:
     def __init__(self):
@@ -46,3 +48,10 @@ def sample_market_data():
       'bairro': 'VL FORMOSA',
       'referencia': 'TV RUA PRETORIA'
     }
+
+
+@pytest.fixture
+def db_factory():
+    db = database.Database(config.test_database_url())
+    db.create_database(model.Base.metadata)
+    return db

@@ -14,6 +14,9 @@ Para apenas rodar a aplicação, testes, relatórios:
 As dependências de desenvolvimento já instalam todas as dependências 
 inclusive para rodar a aplicação (não precisa instalar os dois nesse caso).
 ## Rodando a aplicação
+Por default está utilizando o database como SQLite e salva no arquivo `storage.db`.  
+Para alterar o database basta declarar a url na variável de ambiente `DATABASE_URL`  
+  
 Criar database: `python cli.py create-database`  
   
 Basta rodar diretamente o módulo `main.py`:
@@ -32,12 +35,16 @@ alterações nos arquivos.
 A documentação é gerada automaticamente e fica no path `<url>/docs`.  
 http://127.0.0.1:8000/docs
 ## Testes e Qualidade de código
+Todos os testes rodam com database em memória.  
+ 
 Comandos:
 - Tests: `pytest`
 - Lint: `flake8`
 - Cobertura: `coverage run -m pytest` e `coverage report -m` para o relatório.
+  
+No arquivo Makefile é possível verificar as demais opções de relatórios de qualidade e cobertura.
 
-Estes comandos estão disponíveis também via Makefile:  
+Comandos estão disponíveis via Makefile:  
 ```shell
 > make test
 > make coverage

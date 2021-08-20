@@ -6,14 +6,6 @@ class NotFoundException(Exception):
         self.message = message
 
 
-class FakeStorage:
-    def add(self, market):
-        pass
-
-    def flush(self):
-        pass
-
-
 class DatabaseStorage:
     def __init__(self, db):
         self.db = db
@@ -22,11 +14,7 @@ class DatabaseStorage:
         with database.transaction(self.db):
             market = model.Market(**market_data)
             self.db.add(market)
-            self.flush()
             return market
-
-    def flush(self):
-        self.db.flush()
 
     def load(self, registry):
         market = self.db.query(model.Market).filter(model.Market.registro == registry).first()
