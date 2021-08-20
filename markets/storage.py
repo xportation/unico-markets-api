@@ -51,3 +51,20 @@ class DatabaseStorage:
         market = self.load(registry)
         with database.transaction(self.db):
             return self.db.delete(market)
+
+
+class BulkDatabaseStorage:
+    def __init__(self, db, bulk_size):
+        self.db = db
+        self.bulk_size = bulk_size
+        self.data = []
+
+    def add(self, market_data):
+        self.data.append(model.Market(**market_data))
+        if len(self.data) >= self.bulk_size:
+            self.flush()
+
+    def flush(self):
+        with database.transaction(self.db):
+            self.db.bulk_save_objects(self.data)
+            self.data.clear()

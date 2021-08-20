@@ -1,7 +1,5 @@
 import csv
 
-from markets import model
-
 
 def _fix_number_as_int(market_data):
     number = market_data['numero']
@@ -19,8 +17,7 @@ def load_and_save_market(data, storage):
     ]
     market_data = dict(zip(iter(market_fields), iter(data)))
     _fix_number_as_int(market_data)
-    market = model.Market(**market_data)
-    storage.add(market)
+    storage.add(market_data)
 
 
 def load_markets_from_csv(file, storage):

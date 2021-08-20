@@ -47,3 +47,16 @@ def test_delete(sample_market_data, db_factory):
         market_added = db_storage.add(sample_market_data)
         db_storage.delete(market_added.registro)
         assert not db_storage.load_filters(1, 10, market_added.distrito, None, None, None)
+
+
+def test_bulk_database_storage(sample_market_data, db_factory):
+    db = db_factory.new_session()
+    db_storage = storage.DatabaseStorage(db)
+    bulk_storage = storage.BulkDatabaseStorage(db, 3)
+    expected_counts = [0, 0, 3, 3, 3, 6, 6, 6, 9, 9, 9]
+    for count in expected_counts:
+        bulk_storage.add(sample_market_data)
+        assert len(db_storage.load_filters(1, 100, None, None, None, None)) == count
+    bulk_storage.flush()
+    assert len(db_storage.load_filters(1, 100, None, None, None, None)) == len(expected_counts)
+    db.close()
