@@ -14,6 +14,8 @@ Para apenas rodar a aplicação, testes, relatórios:
 As dependências de desenvolvimento já instalam todas as dependências 
 inclusive para rodar a aplicação (não precisa instalar os dois nesse caso).
 ## Rodando a aplicação
+Criar database: `python cli.py create-database`  
+  
 Basta rodar diretamente o módulo `main.py`:
 ```shell
 > python3 main.py

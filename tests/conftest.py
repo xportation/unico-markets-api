@@ -1,9 +1,6 @@
 import os
 
 import pytest
-from starlette.testclient import TestClient
-
-from markets import application
 
 
 class StorageSpy:
@@ -30,10 +27,22 @@ def storage_spy():
 
 
 @pytest.fixture
-def app():
-    return application.create_app()
-
-
-@pytest.fixture
-def test_client(app):
-    return TestClient(app)
+def sample_market_data():
+    return {
+      'long': -46550164,
+      'lat': -23558733,
+      'setcens': '355030885000091',
+      'areap': '3550308005040',
+      'coddist': 87,
+      'distrito': 'VILA FORMOSA',
+      'codsubpref': 26,
+      'subprefe': 'ARICANDUVA-FORMOSA-CARRAO',
+      'regiao5': 'Leste',
+      'regiao8': 'Leste 1',
+      'nome_feira': 'VILA FORMOSA',
+      'registro': '4041-0',
+      'logradouro': 'RUA MARAGOJIPE',
+      'numero': None,
+      'bairro': 'VL FORMOSA',
+      'referencia': 'TV RUA PRETORIA'
+    }
