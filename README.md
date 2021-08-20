@@ -26,7 +26,7 @@ Basta rodar diretamente o módulo `main.py`:
 Este modo é aconselhado apenas para rodar localmente.
 Para rodar em produção utilizar o `uvicorn`:
 ```shell
-> uvicorn main:app
+> uvicorn main:app --log-config log.ini
 ```
 O comando `make runserver` pode ser utilizado para desenvolvimento, 
 este utiliza o `uvicorn` com **reload** automático quando identificadas 
